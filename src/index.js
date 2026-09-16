@@ -1,9 +1,10 @@
 import express from "express";
+import { PORT } from "./config.js";
+import cryptoRoutes from "../routes/cryptos.routes.js";
 
 const app = express();
 
-const port = 3000;
+app.listen(PORT);
+app.use(cryptoRoutes);
 
-app.listen(port);
-
-console.log("Servidor escuchando en el puerto", port);
+console.log("Servidor escuchando en el puerto", PORT);
