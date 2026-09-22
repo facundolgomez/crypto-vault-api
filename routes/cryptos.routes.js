@@ -1,9 +1,11 @@
 import { Router } from "express";
+import { Crypto } from "../src/models/Crypto.js";
 
 const router = Router();
 
-router.get("/cryptos", (req, res) => {
-  res.send("Obteniendo criptos");
+router.get("/cryptos", async (req, res) => {
+  const cryptos = await Crypto.findAll();
+  res.json(cryptos);
 });
 
 router.get("/cryptos/:id", (req, res) => {
