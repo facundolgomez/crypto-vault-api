@@ -7,6 +7,7 @@ const app = express();
 
 try {
   app.listen(PORT);
+  app.use(express.json());
   app.use(cryptoRoutes);
 
   await sequelize.sync();
