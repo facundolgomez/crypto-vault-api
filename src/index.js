@@ -3,6 +3,7 @@ import { PORT } from "./config.js";
 import cryptoRoutes from "../routes/cryptos.routes.js";
 import { sequelize } from "./db.js";
 import "../src/models/Crypto.js";
+import authRoutes from "../routes/auth.routes.js";
 const app = express();
 
 try {
@@ -15,6 +16,7 @@ try {
     next();
   });
   app.use(cryptoRoutes);
+  app.use(authRoutes);
 
   await sequelize.sync();
   console.log("Servidor escuchando en el puerto", PORT);
